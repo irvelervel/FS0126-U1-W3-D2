@@ -59,3 +59,81 @@ par.classList.remove()
 par.style.border = '3px solid black'
 par.style.fontSize = '1.5em'
 par.style.backgroundColor = 'yellow'
+
+// - cambiare attributi agli elementi
+// prendiamo il logo di epicode in alto
+const logoImg = document.getElementById('epicode-logo')
+// come cambiare il valore dell'attributo src?
+// con .getAttribute(nomeAttributo) -> LEGGETE
+logoImg.getAttribute('src') // "./assets/img/logo.svg"
+// con .setAttribute(nomeAttributo, valore) -> MODIFICATE
+logoImg.setAttribute('src', 'https://placebear.com/200/200')
+
+// cambio l'href al primo link della ul dei links
+const firstAnchor = document.querySelector('#nav-links > li:nth-of-type(1) > a')
+firstAnchor.setAttribute('href', 'https://www.google.it')
+
+// creiamo ora degli elementi DA ZERO!
+// per creare un elemento da zero avrete bisogno di un metodo chiamato createElement()
+const newImg = document.createElement('img') // <img /> --> 1)
+// aggiungo ora all'immagine una src
+newImg.setAttribute('src', 'https://placedog.net/300/300') // --> 2)
+newImg.setAttribute('alt', 'Doggo picture') // --> 2)
+// <img src="https://placedog.net/300/300" alt="Doggo picture" />
+// l'elemento esiste ed è valido, ma NON è stato ancora inserito nella pagina da nessuna parte!
+// per inserire un elemento nella pagina, ci sono diversi modi; quello più semplice è APPENDERLO
+// ad un contenitore!
+// recuperiamo il parent element -> il tag <main>
+const main = document.querySelector('main') // <main>...</main>
+main.appendChild(newImg) // appendo alla fine del <main> la mia nuova immagine creata da 0 --> 3)
+
+// 1) prima si crea un elemento VUOTO con createElement() -> un <p></p> una <img />
+// 2) ora si riempie l'elemento vuoto con contenuti, testo, attributi etc.
+// 3) ora l'elemento esiste ma solo "in memoria", quindi dobbiamo appenderlo da qualche parte! -> appendChild()
+
+// creiamo un paragrafo da zero, ci mettiamo dentro un po' di testo, assegniamo una classe CSS e lo
+// inseriamo nel documento
+
+// 1)
+const newP = document.createElement('p') // <p></p>
+// 2)
+// inserisco del contenuto
+newP.innerText = `Lorem ipsum Lorem ipsum Lorem ipsum Lorem
+ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
+ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum`
+// aggiungo una classe
+newP.classList.add('big-text')
+// risultato -> <p class="big-text">Lorem ipsum ......</p>
+
+// 3)
+// prendo un riferimento del contenitore in cui lo voglio inserire
+const parent = document.getElementById('form-section')
+// ci appendo dentro il mio nuovo paragrafo
+parent.appendChild(newP)
+
+// ESERCIZIO
+// a) metti in corsivo tutti i link nella prima lista non ordinata (menu nav)
+// #nav-links li
+const allTheLinks = document.querySelectorAll('#nav-links li') // [li, li, li, li]
+console.log(allTheLinks)
+
+// metterli in corsivo...?
+// allTheLinks.style.fontStyle = 'italic' <-- SBAGLIATO! stai dando un attributo CSS non agli elementi,
+// ma all'array!
+
+// CICLO l'ARRAY
+for (let i = 0; i < allTheLinks.length; i++) {
+  // APPLICO LA PROPRIETÀ A allTheLinks[i], cioè l'elemento dell'array
+  allTheLinks[i].style.fontStyle = 'italic'
+}
+
+// scrivi una funzione che prenda tutti gli h2 della pagina e li sottolinei
+const underlineAllh2 = function () {
+  // 1) recupero tutti gli h2
+  const tuttiGlih2 = document.getElementsByTagName('h2')
+  // CICLO L'ARRAY DEGLI h2
+  for (let i = 0; i < tuttiGlih2.length; i++) {
+    tuttiGlih2[i].style.textDecoration = 'underline'
+  }
+}
+underlineAllh2()
