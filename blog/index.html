@@ -30,6 +30,14 @@
       main > article > p:nth-of-type(5) {
         /* il quinto p immediatamente dentro article immediatamente dentro main */
       }
+
+      .text-red {
+        color: #ae0707;
+      }
+
+      .text-start {
+        text-align: start;
+      }
     </style>
   </head>
 
@@ -43,10 +51,10 @@
           height="60"
           id="epicode-logo"
         />
-        <p>Epicode - Il blog dei developers</p>
+        <p id="title-p">Epicode - Il blog dei developers</p>
       </div>
       <nav>
-        <ul>
+        <ul id="nav-links">
           <li><a href="index.html" title="Home Page">Home</a></li>
           <li>
             <a
@@ -190,7 +198,7 @@
             nostra newsletter:
           </p>
 
-          <form method="POST" action="elabora_form.php">
+          <form id="newsletter-form" method="POST" action="elabora_form.php">
             <fieldset>
               <input
                 type="email"
@@ -253,6 +261,6 @@
         >
       </address>
     </footer>
-    <script src="../scripts/DOM.js"></script>
+    <script src="../scripts/DOM_manipulation.js"></script>
   </body>
 </html>
